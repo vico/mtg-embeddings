@@ -76,7 +76,6 @@ df_colors %>% head(10)
 
 ## 2D UMAP Projection
 
-
 ```{r}
 colors_hex <- c(
   "white" = "#F9FAF4",
@@ -100,8 +99,8 @@ plot <- ggplot(df_colors, aes(x = x_2d, y = y_2d, fill = color)) +
     nrow = 1
   )) +
   labs(
-    title = "2D UMAP Projection of Concatenated Pokémon Text + Image Embeddings",
-    subtitle = "All Pokémon up to Scarlet/Violet DLC. Outliers removed.",
+    title = "2D UMAP Projection of Magic: The Gathering Card Embeddings",
+    subtitle = "All distinct cards up to Aetherdrift (2025-02-14). Outliers removed.",
     caption = caption
   ) +
   theme(
