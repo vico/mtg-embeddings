@@ -26,7 +26,7 @@ theme_set(theme_minimal(base_size = 8, base_family = "Overpass") +
 
 
 ```{r}
-df <- read_parquet("/Users/maxwoolf/Downloads/mtg_embeddings_2d.parquet")
+df <- read_parquet("/Users/maxwoolf/Downloads/mtg_embeddings_2d-2.parquet")
 
 df %>% head()
 ```
@@ -34,19 +34,19 @@ df %>% head()
 ```{r}
 color_identity <- function(color_sum, is_B, is_U, is_R, is_G, is_W) {
   if (color_sum == 0) {
-    color <- "colorless"
+    color <- "Colorless"
   } else if (color_sum >= 2) {
-    color <- "multicolor"
+    color <- "Multicolor"
   } else if (is_B) {
-    color <- "black"
+    color <- "Black"
   } else if (is_U) {
-    color <- "blue"
+    color <- "Blue"
   } else if (is_R) {
-    color <- "red"
+    color <- "Red"
   } else if (is_G) {
-    color <- "green"
+    color <- "Green"
   } else if (is_W) {
-    color <- "white"
+    color <- "White"
   }
 
   color
@@ -66,7 +66,7 @@ df_colors <- df %>%
   rowwise() %>%
   mutate(
     color = color_identity(color_sum, is_B, is_U, is_R, is_G, is_W),
-    color = factor(color, levels = c("white", "blue", "black", "red", "green", "multicolor", "colorless"))
+    color = factor(color, levels = c("White", "Blue", "Black", "Red", "Green", "Multicolor", "Colorless"))
   ) %>%
   ungroup() %>%
   select(name, x_2d, y_2d, color)
@@ -78,20 +78,20 @@ df_colors %>% head(10)
 
 ```{r}
 colors_hex <- c(
-  "white" = "#F9FAF4",
-  "blue" = "#0E68AB",
-  "black" = "#150B00",
-  "red" = "#D3202A",
-  "green" = "#00733E",
-  "multicolor" = "#DAA520",
-  "colorless" = "#C9C5C0"
+  "White" = "#F9FAF4",
+  "Blue" = "#0E68AB",
+  "Black" = "#150B00",
+  "Red" = "#D3202A",
+  "Green" = "#00733E",
+  "Multicolor" = "#DAA520",
+  "Colorless" = "#C9C5C0"
 )
 
 
 plot <- ggplot(df_colors, aes(x = x_2d, y = y_2d, fill = color)) +
-  geom_point(shape = 21, size = 0.5, stroke = 0.04, alpha = 0.7, color = "black") +
-  scale_x_continuous(limits = c(NA, 426)) +
-  scale_y_continuous(limits = c(-347, NA)) +
+  geom_point(shape = 21, size = 0.5, stroke = 0.04, alpha = 0.6, color = "black") +
+  scale_x_continuous(limits = c(-5, 5)) +
+  scale_y_continuous(limits = c(-5, 5)) +
   scale_fill_manual(values = colors_hex) +
   guides(fill = guide_legend(
     override.aes = list(size = 2, alpha = 1, stroke = 0.8),
