@@ -26,7 +26,7 @@ theme_set(theme_minimal(base_size = 8, base_family = "Overpass") +
 
 
 ```{r}
-df <- read_parquet("/Users/maxwoolf/Downloads/mtg_embeddings_2d-2.parquet")
+df <- read_parquet("/Users/maxwoolf/Downloads/mtg_embeddings_2d-3.parquet")
 
 df %>% head()
 ```
@@ -91,7 +91,7 @@ colors_hex <- c(
 plot <- ggplot(df_colors, aes(x = x_2d, y = y_2d, fill = color)) +
   geom_point(shape = 21, size = 0.5, stroke = 0.04, alpha = 0.6, color = "black") +
   scale_x_continuous(limits = c(-5, 5)) +
-  scale_y_continuous(limits = c(-5, 5)) +
+  scale_y_continuous(limits = c(-5.5, 5)) +
   scale_fill_manual(values = colors_hex) +
   guides(fill = guide_legend(
     override.aes = list(size = 2, alpha = 1, stroke = 0.8),
