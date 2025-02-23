@@ -4,15 +4,15 @@
 
 Code used to create text embeddings of all Magic: The Gathering card until Aetherdrift (2024-02-14). The text embeddings are centered around card mechanics (i.e. no flavor text/card art embeddings) in order to identify similar cards mathematically.
 
-These embeddings can be downloaded from Hugging Face datasets
+These embeddings can be downloaded from [Hugging Face datasets](https://huggingface.co/datasets/minimaxir/mtg-embeddings), specifically the `mtg-embeddings.parquet` file [here](https://huggingface.co/datasets/minimaxir/mtg-embeddings/tree/main).
 
 Relevant notebooks:
 
-- mtgjson_etl.ipynb: Python code for preprocessing the Magic card data.
-- mtg_embeddings_gen.ipynb: Python code run on a cloud VM w/ GPU to batch-create the embeddings.
-- mtg_embeddings_umap_to_2D.ipynb: Python code run on a cloud VM w/ GPU to reduce the dimensionality of the embeddings from 768D to 2D for data visualization:
-- mtg_2d_data_viz.Rmd: R code to create the UMAP data visualization.
-- mtg_related_card_img.ipynb: Python code to test related card compositing.
+- [mtgjson_etl.ipynb](mtgjson_etl.ipynb): Python code for preprocessing the Magic card data.
+- [mtg_embeddings_gen.ipynb](mtg_embeddings_gen.ipynb): Python code run on a cloud VM w/ GPU to batch-create the embeddings.
+- [mtg_embeddings_umap_to_2D.ipynb](mtg_embeddings_umap_to_2D.ipynb): Python code run on a cloud VM w/ GPU to reduce the dimensionality of the embeddings from 768D to 2D for data visualization:
+- [mtg_2d_data_viz.Rmd](mtg_2d_data_viz.Rmd): R code to create the UMAP data visualization.
+- [mtg_related_card_img.ipynb](mtg_related_card_img.ipynb): Python code to test related card compositing into a single image.
 
 ## How The Embeddings Were Created
 
